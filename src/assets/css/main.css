@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply px-16;
+  @apply py-4;
+  @apply uppercase;
+  @apply text-xl;
+  @apply font-body;
+  @apply shadow;
+  @apply inline-block;
+  @apply rounded;
+  @apply font-bold;
+  @apply text-center;
+}
+
+.btn-blue {
+  @apply bg-blue-fbc;
+  @apply text-white;
+}
+
+.btn-gold {
+  @apply bg-gold;
+  @apply text-white;
+}
+
+.btn-white {
+  @apply bg-white;
+  @apply text-blue-fbc;
+}
+
+.btn-sm {
+  @apply px-4;
+  @apply py-2;
+  @apply text-base;
+}
+
+.full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-inline-start: 50%;
+  margin-inline-end: unset;
+  max-width: none;
+}
+
+.pb-aspect-ratio {
+  padding-bottom: 56.25%;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8" />
+    <title>{{ title }}</title>
+    <meta
+      name="description"
+      content="11ty Contentful Starter utilizing the HTML5UP Solid State Theme"
+    />
+    <meta name="author" content="Contentful" />
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}" />
+    <noscript
+      ><link rel="stylesheet" href="{{ '/assets/css/noscript.css' | url }}"
+    /></noscript>
+
+    <!-- GTag
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    {% if google-id %}
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id={{ google - id }}"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', {{google-id}});
+    </script>
+    {%endif%}
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="{{ 'images/favicon.png' | url }}" />
+  </head>
+  <body class="is-preload font-body">
+      <header id="header" class="p-2 flex gap-4 align-center justify-center shadow-lg">
+        <a href="{{ '/' | url }}">
+          <img src="/assets/images/logo.png" alt="Freedom Boat Club Image" class="w-10 h-10"/>
+        </a>
+        <h2 class="flex-grow flex items-center">
+          <a href="{{ '/' | url }}" class="text-blue-fbc text-lg font-bold"
+            >Freedom Boat Club of Virginia</a
+          >
+        </h2>
+        <nav class="flex justify-center gap-2">
+          <a href="/#" class="py-2 px-3 rounded bg-white text-blue-fbc border-2 border-blue-fbc font-bold"
+            >Instant Tour</a
+          >
+          <a href="/#" class="py-2 px-3 rounded bg-blue-fbc text-white border-2 border-blue-fbc font-bold"
+            >Join Now</a
+          >
+        </nav>
+      </header>
+      <div id="Wrapper" class="max-w-3xl mx-auto my-4">
+        {{ content | safe }}
+      </div>
+      <footer class="py-4 px-1 bg-gray-100 text-sm text-gray-600 text-center">
+        <ul
+          id="SocialLinks"
+          class="flex gap-4 mx-auto my-4 justify-center align-center"
+        >
+          <li>
+            {% set socialIconClasses = 'h-6 w-6 text-gray-400 hover:text-gray-500' %}
+            <a href="">
+              {% include 'icons/youtube.njk' %}
+            </a>
+          </li>
+          <li>
+            <a href="">
+              {% include 'icons/instagram.njk' %}
+            </a>
+          </li>
+          <li>
+            <a href="">
+              {% include 'icons/facebook.njk' %}
+            </a>
+          </li>
+        </ul>
+        <p>
+          Copyright 2020 Freedom Boat Club of Virginia, LLC. All Rights
+          Reserved.
+        </p>
+        <ul
+          id="FooterLinks"
+          class="flex gap-4 mx-auto my-4 justify-center align-center"
+        >
+          <li>
+            <a href="">Contact</a>
+          </li>
+          <li>
+            <a href="">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="">About</a>
+          </li>
+        </ul>
+      </footer>
+
+    <!-- Scripts -->
+    <!-- <script src={{"/assets/js/jquery.min.js" | url}}></script>
+  <script src={{"/assets/js/jquery.scrollex.min.js" | url}}></script>
+  <script src={{"/assets/js/browser.min.js" | url}}></script>
+  <script src={{"/assets/js/breakpoints.min.js" | url}}></script>
+  <script src={{"/assets/js/util.js" | url}}></script>
+  <script src={{"/assets/js/main.js" | url}}></script> -->
+  </body>
+</html>

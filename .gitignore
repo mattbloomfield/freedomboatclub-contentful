@@ -14,5 +14,7 @@ api-docs/
 
 # Ignore eleventy output when doing manuell tests
 _site/
+dist/
 
 .DS_Store
+.env
