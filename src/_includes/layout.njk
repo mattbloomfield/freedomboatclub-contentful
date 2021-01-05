@@ -51,68 +51,11 @@
     <link rel="icon" type="image/png" href="{{ 'images/favicon.png' | url }}" />
   </head>
   <body class="is-preload font-body">
-      <header id="header" class="p-2 flex gap-4 align-center justify-center shadow-lg">
-        <a href="{{ '/' | url }}">
-          <img src="/assets/images/logo.png" alt="Freedom Boat Club Image" class="w-10 h-10"/>
-        </a>
-        <h2 class="flex-grow flex items-center">
-          <a href="{{ '/' | url }}" class="text-blue-fbc text-lg font-bold"
-            >Freedom Boat Club of Virginia</a
-          >
-        </h2>
-        <nav class="flex justify-center gap-2">
-          <a href="/#" class="py-2 px-3 rounded bg-white text-blue-fbc border-2 border-blue-fbc font-bold"
-            >Instant Tour</a
-          >
-          <a href="/#" class="py-2 px-3 rounded bg-blue-fbc text-white border-2 border-blue-fbc font-bold"
-            >Join Now</a
-          >
-        </nav>
-      </header>
+      {% include "./header.njk" %}
       <div id="Wrapper" class="max-w-3xl mx-auto my-4">
         {{ content | safe }}
       </div>
-      <footer class="py-4 px-1 bg-gray-100 text-sm text-gray-600 text-center">
-        <ul
-          id="SocialLinks"
-          class="flex gap-4 mx-auto my-4 justify-center align-center"
-        >
-          <li>
-            {% set socialIconClasses = 'h-6 w-6 text-gray-400 hover:text-gray-500' %}
-            <a href="">
-              {% include 'icons/youtube.njk' %}
-            </a>
-          </li>
-          <li>
-            <a href="">
-              {% include 'icons/instagram.njk' %}
-            </a>
-          </li>
-          <li>
-            <a href="">
-              {% include 'icons/facebook.njk' %}
-            </a>
-          </li>
-        </ul>
-        <p>
-          Copyright 2020 Freedom Boat Club of Virginia, LLC. All Rights
-          Reserved.
-        </p>
-        <ul
-          id="FooterLinks"
-          class="flex gap-4 mx-auto my-4 justify-center align-center"
-        >
-          <li>
-            <a href="">Contact</a>
-          </li>
-          <li>
-            <a href="">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="">About</a>
-          </li>
-        </ul>
-      </footer>
+      {% include "./footer.njk" %}
 
     <!-- Scripts -->
     <!-- <script src={{"/assets/js/jquery.min.js" | url}}></script>

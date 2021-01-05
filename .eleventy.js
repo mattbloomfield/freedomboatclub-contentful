@@ -22,22 +22,147 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/webfonts");
+
+  eleventyConfig.addFilter("split", function(value, separator=',') { 
+    return value.split(separator)
+  });
+
+  eleventyConfig.addFilter("youTubeId", function(url) { 
+    const arr1 = url.split('?v=');
+    if (arr1.length > 1) {
+      return arr1[1];
+    } else {
+      return url.split('youtu.be/')[1];
+    }
+  });
+
   eleventyConfig.addShortcode("documentToHtmlString", documentToHtmlString);
   eleventyConfig.addShortcode("imageProcessing", imageProcessing);
   eleventyConfig.addShortcode("marked", marked);
 
-  eleventyConfig.addShortcode("bannerBlock", function (bannerBlock) {
+  eleventyConfig.addShortcode("footer", function (footer) {
     return `
-                <section id="wrapper">
-                    <header>
-                        <div class="inner">
-                            <h2>Title</h2>
-                            ${JSON.stringify(bannerBlock)}
-                        </div>
-                    </header>
-                </section>
+            ${JSON.stringify(footer.fields.links)}
         `;
   });
+
+  eleventyConfig.addShortcode("footerLink", function (footerLink) {
+    return `
+            <li>
+              <a href="${footerLink.fields.destination}">${footerLink.fields.title}</a>
+            </li>
+        `;
+  });
+
+  eleventyConfig.addShortcode('breadcrumb', function(crumbs) {
+    let html = ``;
+    crumbs.forEach(crumb=> {
+      if (crumb.loc) {
+        html += `<a href="${crumb.loc}" class="underline">${crumb.label}</a><span> > </span>`;
+      } else {
+        html += `<span class="font-bold">${crumb.label}</span>`;
+      }
+    });
+    return `
+            <div id="Breadcrumb" class="text-xs uppercase text-gray-700 my-8">
+              ${html}
+            </div>
+        `;
+
+  });
+
+  eleventyConfig.addShortcode("mainMenuItem", function (label, location) {
+    return `
+            <a class="grid items-center justify-center bg-blue-fbc w-full h-48 rounded" href="${location}">
+              <span class="font-headline font-bold text-2xl text-white">${label}</span>
+            </a>
+        `;
+  });
+  
+  eleventyConfig.addShortcode("videoButton", function (ytId, h, p, textPosition='below') {
+    let textHtml = `
+              <div class="p-4 text-center rounded shadow-lg">
+                <h3 class="text-xl font-bold">${h}</h3>`
+    if (p && p.length && textPosition != 'both') textHtml += `<p class="mt-4">${p}</p>`
+    textHtml +=`</div>
+    `
+    let html = `
+            <a class="flex flex-col font-headline bg-gray-200 shadow-lg">`
+    if (textPosition === 'above' || textPosition == 'both') html += textHtml;
+    html += `<img src="https://i.ytimg.com/vi_webp/${ytId}/maxresdefault.webp">`;
+    if (textPosition === 'below') html += textHtml;
+    if (textPosition == 'both') html += `<div class="p-4 text-center rounded shadow-lg text-sm"><p>${p}</p></div>`;
+    html += `</a>`;
+    return html;
+  });
+
+  eleventyConfig.addShortcode("header", function (h1, p, type) {
+    let classes = 'border-blue-fbc bg-blue-fbc text-white';
+    if (type === 'gold') {
+      classes = 'border-gold';
+    }
+    return `
+            <div id="HeaderContainer" class="text-center border-2 rounded ${classes} p-4 my-4">
+              <h1 class="text-2xl font-bold my-4 font-headline">${h1}</h1>
+              <p class="font-headline">${p}</p>
+            </div>
+        `;
+  });
+
+  eleventyConfig.addShortcode("instructions", function (p) {
+    return `
+            <div id="Instructions" class="text-center my-8">
+              <h2 class="font-bold text-lg">${p}</h2>
+            </div>
+        `;
+  });
+
+  eleventyConfig.addShortcode('heroVideo', function(heroVideo) {
+    return `
+            <div id="HeroVideo" class="pb-aspect-ratio relative mt-8 mb-4 overflow-hidden rounded">
+              <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/${heroVideo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        `;
+
+  })
+
+  eleventyConfig.addShortcode('slimAd', function(slimAd) {
+    return `
+            <div id="SlimAd" class="text-center my-16 max-w-lg mx-auto">
+            <h3 class="text-2xl mb-6 font-headline">It’s like having a best friend with a boat. Except you don’t have to ask permission. 
+            <br/><br />
+            You’ll thank us later.</h3>
+              <a class="btn btn-blue" href="">Join Now</a>
+            </div>
+        `;
+
+  })
+
+  eleventyConfig.addShortcode('fullWidthAd', function(fullWidthAd) {
+    return `
+            <div id="FullWidthAd" class="my-16 py-10 px-4 full-bleed mx-auto flex gap-16 align-center bg-gold justify-center	">
+                <h3 class=" max-w-lg text-center text-2xl font-headline text-white">Time to stop dreaming and start living. Start your membership with Freedom Boat Club today.</h3>
+                <div class="text-center grid items-center justify-center">
+                  <a class="btn btn-white btn-sm sm:text-gold" href="/tour/">Take a Tour</a>
+                </div>
+            </div>
+        `;
+  })
+
+  eleventyConfig.addShortcode('fullWidthQuote', function(fullWidthQuote) {
+    return `
+            <div id="FullWidthQuote" class="my-16 p-4 full-bleed mx-auto flex gap-4 align-center bg-blue-fbc justify-center">
+              <img class="rounded-full h-64 w-64" src="http://placehold.it/350" />
+              <blockquote class="flex flex-col justify-center text-center max-w-lg gap-8">
+                <h3 class="mx-auto text-2xl font-headline text-white">Freedom Boat Club made quarantine worth it. If you’re going to distance from society, might as well do it on a boat!</h3>
+                <div class="text-center">
+                  <a class="btn btn-white btn-sm" href="/member-experiences/testimonials/">Read More Testimonials</a>
+                </div>
+              </blockquote>
+            </div>
+        `;
+  })
+
   eleventyConfig.addShortcode("contentBlock", function (contentBlock) {
     return `
                     <section id="${contentBlock.fields.sectionLink}">

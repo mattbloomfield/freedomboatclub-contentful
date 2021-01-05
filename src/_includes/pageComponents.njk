@@ -1,0 +1,32 @@
+{% for comp in components %}
+    {% set type = comp.sys.contentType.sys.id %}
+    <!-- Switch -->
+    {% switch type %}
+      {% case 'instructions' %}
+        {% set instructionText = '' %}
+        {% for paragraph in comp.fields.bodyText.content[0].content %}
+          {% set instructionText = instructionText ~ paragraph.value %}
+        {% endfor %}
+        {% instructions instructionText %}
+      {% case 'menuBlock' %}
+        <div id="Options" class="grid grid-cols-2 w-full gap-x-4 my-8 gap-y-8">
+        {% for item in comp.fields.menuItems %}
+          {% set menuItemId = item.sys.id %}
+          {% for menuItem in menuItems.items %}
+            {% if menuItem.sys.id == menuItemId %}
+              {% mainMenuItem menuItem.fields.label, menuItem.fields.page.fields.slug %}
+            {% endif %}
+          {% endfor %}
+          {% for videoMenuItem in videoMenuItems.items %}
+            {% if videoMenuItem.sys.id == menuItemId %}
+              {% videoButton videoMenuItem.fields.youTubeUrl | youTubeId, videoMenuItem.fields.label, videoMenuItem.fields.summary, 'below' %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+        </div>
+      {% case 'heroVideo' %}
+        {% heroVideo comp.fields.youTubeUrl | youTubeId %}
+      {% default %}
+        {# <p>This is false</p> #}
+    {% endswitch %}
+{% endfor %}

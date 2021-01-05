@@ -5,43 +5,15 @@ title: Freedom Boat Club of Virginia
 description: Boating done right!
 ---
 
-<div id="HeroVideo" class="pb-aspect-ratio relative mb-4 overflow-hidden rounded">
-  <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/uc6AZZoyJc0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+{% heroVideo 'uc6AZZoyJc0' %}
 
 <div id="Buttons" class="grid grid-cols-2 gap-4 mx-auto">
-  <div class="grid items-center justify-center bg-blue-fbc w-full h-48 rounded">
-    <a class="font-headline font-bold text-2xl text-white" href="/boats">Our Boats</a>
-  </div>
-  <div class="grid items-center justify-center bg-blue-fbc w-full h-48 rounded">
-    <a class="font-headline font-bold text-2xl text-white" href="/boats">Training & Insurance</a>
-  </div>
-  <div class="grid items-center justify-center bg-blue-fbc w-full h-48 rounded">
-    <a class="font-headline font-bold text-2xl text-white" href="/boats">Member Experiences</a>
-  </div>
-  <div class="grid items-center justify-center bg-blue-fbc w-full h-48 rounded">
-    <a class="font-headline font-bold text-2xl text-white" href="/boats">Pricing</a>
-  </div>
+  {% mainMenuItem 'Our Boats', '/locations/' %}
+  {% mainMenuItem 'Training & Insurance', '/training-and-insurance/' %}
+  {% mainMenuItem 'Member Experiences', '/member-experiences/' %}
+  {% mainMenuItem 'Pricing', '/pricing/' %}
 </div>
 
-<div id="SlimAd" class="text-center my-16 max-w-lg mx-auto">
-  <h3 class="text-2xl mb-6 font-headline">Time to stop dreaming and start living. Start your membership with Freedom Boat Club today.</h3>
-  <a class="btn btn-gold" href="">Take a Tour</a>
-</div>
+{% fullWidthQuote %}
 
-<div id="FullWidthQuote" class="my-16 p-4 full-bleed mx-auto flex gap-4 align-center bg-blue-fbc justify-center">
-  <img class="rounded-full h-64 w-64" src="http://placehold.it/350" />
-  <blockquote class="flex flex-col justify-center text-center max-w-lg gap-8">
-      <h3 class="mx-auto text-2xl font-headline text-white">Freedom Boat Club made quarantine worth it. If you’re going to distance from society, might as well do it on a boat!</h3>
-    <div class="text-center">
-      <a class="btn btn-white btn-sm" href="">Read More Testimonials</a>
-    </div>
-  </blockquote>
-</div>
-
-<div id="SlimAd" class="text-center my-16 max-w-lg mx-auto">
-  <h3 class="text-2xl mb-6 font-headline">It’s like having a best friend with a boat. Except you don’t have to ask permission. 
-<br/><br />
-You’ll thank us later.</h3>
-  <a class="btn btn-blue" href="">Join Now</a>
-</div>
+{% slimAd %}

@@ -1,0 +1,65 @@
+---
+permalink: "/member-experiences/what-to-do/"
+layout: layout.njk
+title: What to Do
+description: Find out what members like to do on the water in ${location}
+---
+
+{% breadcrumb [{label: 'Home', loc: '/'}, {label: 'Member Experiences', loc: '/member-experiences/'}, {label: 'What to Do'}] %}
+
+{% header 'What to Do', 'Each area boasts impressive opportunities to get out and explore. While not every area supports the same activities, each is valuable in its own way.', 'blue' %}
+
+{% instructions 'Click a location to see the activities available in each area' %}
+
+<div id="LocationSwitcher" class="grid grid-cols-4">
+  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+    <span>Woodbridge</span>
+    <input type="radio" class="hidden" name="Location">
+  </label>
+  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+    <span>Stafford</span>
+    <input type="radio" class="hidden" name="Location">
+  </label>
+  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+    <span>Lake Anna</span>
+    <input type="radio" class="hidden" name="Location">
+  </label>
+  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+    <span>Richmond</span>
+    <input type="radio" class="hidden" name="Location">
+  </label>
+</div>
+
+<div id="Options" class="grid grid-cols-3 w-full my-8 gap-x-4  gap-y-8">
+  {% videoButton 'uc6AZZoyJc0', 'D.C.', '', 'above' %}
+  {% videoButton 'uc6AZZoyJc0', 'Fishing', '', 'above' %}
+</div>
+
+{% slimAd %}
+
+<script>
+  const labels = document.querySelectorAll('#LocationSwitcher label');
+  labels[0].querySelector('input').checked = true;
+  deselectAll(labels)
+  selectLoc(labels[0]);
+  labels.forEach(label=> {
+    label.addEventListener('change', (ev)=> {
+      deselectAll(labels)
+      selectLoc(label);
+    })
+  })
+
+  function selectLoc(label) {
+    label.classList.add('border-blue-fbc');
+    label.classList.add('text-blue-fbc');
+    label.classList.add('font-bold');
+    // do some content stuff too
+  }
+  function deselectAll(labels) {
+    labels.forEach(label=> {
+      label.classList.remove('border-blue-fbc');
+      label.classList.remove('text-blue-fbc');
+      label.classList.remove('font-bold');
+    })
+  }
+</script>
