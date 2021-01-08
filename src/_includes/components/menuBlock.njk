@@ -1,0 +1,18 @@
+<div id="Options" class="grid grid-cols-2 w-full gap-x-4 my-8 gap-y-8 text-center">
+    {% for item in comp.fields.menuItems %}
+        {% set menuItemId = item.sys.id %}
+
+        {% for menuItem in relations.menuItems.items %}
+            {% if menuItem.sys.id == menuItemId %}
+                {% mainMenuItem menuItem.fields.label, menuItem.fields.page.fields.slug, menuItem.fields.page.fields %}
+            {% endif %}
+        {% endfor %}
+
+        {% for videoMenuItem in relations.videoMenuItems.items %}
+            {% if videoMenuItem.sys.id == menuItemId %}
+                {% videoButton videoMenuItem.fields.youTubeUrl | youTubeId, videoMenuItem.fields.label, videoMenuItem.fields.summary, 'below', videoMenuItem.fields %}
+            {% endif %}
+        {% endfor %}
+        
+    {% endfor %}
+</div>

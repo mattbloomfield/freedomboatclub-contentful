@@ -1,0 +1,19 @@
+---
+permalink: "/locations/stafford/"
+layout: layout.njk
+title: Stafford
+description: Our Stafford location boasts 22 boats available and 4 types of schooners
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle, loc: pages.locations.index.fields.slug}, {label: pages.locations.stafford.fields.shortTitle }] %}
+
+{% set bodyText = '' %}
+{% for paragraph in pages.locations.stafford.fields.bodyText.content[0].content %}
+    {% set bodyText = bodyText ~ paragraph.value %}
+{% endfor %}
+{% header pages.locations.stafford.fields.title, bodyText, 'blue' %}
+
+{% set components = pages.locations.stafford.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}
+
+{% slimAd %}

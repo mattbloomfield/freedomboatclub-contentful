@@ -1,0 +1,18 @@
+---
+permalink: "/member-experiences/"
+layout: layout.njk
+title: Member Experiences
+description: Choose an option to see the member experiences
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle}] %}
+
+{% set bodyText = '' %}
+{% for paragraph in pages.memberExperiences.index.fields.bodyText.content[0].content %}
+    {% set bodyText = bodyText ~ paragraph.value %}
+{% endfor %}
+
+{% header pages.memberExperiences.index.fields.title, bodyText, 'blue' %}
+
+{% set components = pages.memberExperiences.index.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}

@@ -5,14 +5,17 @@ title: Member Testimonials
 description: Find out what members like to do on the water in ${location}
 ---
 
-{% breadcrumb [{label: 'Home', loc: '/'}, {label: 'Member Experiences', loc: '/member-experiences/'}, {label: 'Testimonials'}] %}
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.testimonials.fields.shortTitle}] %}
 
-{% header 'Member Testimonials', 'See for yourself what our members have to say', 'blue' %}
+{% set bodyText = '' %}
+{% for paragraph in pages.memberExperiences.testimonials.fields.bodyText.content[0].content %}
+    {% set bodyText = bodyText ~ paragraph.value %}
+{% endfor %}
 
-{% heroVideo 'uc6AZZoyJc0' %}
+{% header pages.memberExperiences.testimonials.fields.title, bodyText, 'blue' %}
 
-{% instructions 'Click a video to see what our members have to say about their experiences with us.' %}
-
+{% set components = pages.memberExperiences.testimonials.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}
 
 <div id="Options" class="grid grid-cols-3 w-full my-8 gap-x-4  gap-y-8">
   {% videoButton 'uc6AZZoyJc0', 'Smith Family', '', 'below' %}

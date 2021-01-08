@@ -8,11 +8,8 @@ const client = contentful.createClient({
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 
 module.exports = async () => {
-    return client.getEntries({
-        'content_type': 'videoMenuItem'
-      })
+    return client.getEntry('4qSvbtBX9s3p0Q2BlLDcTZ')
         .then((entry) => {
-            console.log('videoMenuItems', JSON.stringify(entry))
             return entry
         })
         .catch((err) => console.log(err))

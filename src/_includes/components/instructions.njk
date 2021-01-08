@@ -1,0 +1,5 @@
+{% set instructionText = '' %}
+{% for paragraph in comp.fields.bodyText.content[0].content %}
+    {% set instructionText = instructionText ~ paragraph.value %}
+{% endfor %}
+{% instructions instructionText %}

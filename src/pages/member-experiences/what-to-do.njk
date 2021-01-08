@@ -5,11 +5,17 @@ title: What to Do
 description: Find out what members like to do on the water in ${location}
 ---
 
-{% breadcrumb [{label: 'Home', loc: '/'}, {label: 'Member Experiences', loc: '/member-experiences/'}, {label: 'What to Do'}] %}
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.whatToDo.fields.shortTitle}] %}
 
-{% header 'What to Do', 'Each area boasts impressive opportunities to get out and explore. While not every area supports the same activities, each is valuable in its own way.', 'blue' %}
+{% set bodyText = '' %}
+{% for paragraph in pages.memberExperiences.whatToDo.fields.bodyText.content[0].content %}
+    {% set bodyText = bodyText ~ paragraph.value %}
+{% endfor %}
 
-{% instructions 'Click a location to see the activities available in each area' %}
+{% header pages.memberExperiences.whatToDo.fields.title, bodyText, 'blue' %}
+
+{% set components = pages.memberExperiences.whatToDo.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}
 
 <div id="LocationSwitcher" class="grid grid-cols-4">
   <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">

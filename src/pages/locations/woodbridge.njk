@@ -1,0 +1,19 @@
+---
+permalink: "/locations/woodbridge/"
+layout: layout.njk
+title: Woodbridge
+description: Our Woodbridge location boasts 22 boats available and 4 types of schooners
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle, loc: pages.locations.index.fields.slug}, {label: pages.locations.woodbridge.fields.shortTitle }] %}
+
+{% set bodyText = '' %}
+{% for paragraph in pages.locations.woodbridge.fields.bodyText.content[0].content %}
+    {% set bodyText = bodyText ~ paragraph.value %}
+{% endfor %}
+{% header pages.locations.woodbridge.fields.title, bodyText, 'blue' %}
+
+{% set components = pages.locations.woodbridge.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}
+
+{% slimAd %}

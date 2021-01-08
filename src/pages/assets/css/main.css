@@ -48,3 +48,11 @@
 .pb-aspect-ratio {
   padding-bottom: 56.25%;
 }
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible !important;
+}
