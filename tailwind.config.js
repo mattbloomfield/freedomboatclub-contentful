@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/pages/assets/css/*.css', './src/pages/*.njk', './src/pages/**/*.njk', './src/pages/**/**/*.njk'],
+  purge: ['./src/content/assets/css/*.css', './src/content/*.njk', './src/content/**/*.njk', './src/content/**/**/*.njk'],
   darkMode: 'media',
   theme: {
     fontFamily: {
