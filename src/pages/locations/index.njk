@@ -7,13 +7,7 @@ description: Choose a location to see the available boats
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle }] %}
 
-{% set bodyText = '' %}
-
-{% for paragraph in pages.locations.index.fields.bodyText.content[0].content %}
-    {% set bodyText = bodyText ~ paragraph.value %}
-{% endfor %}
-
-{% header pages.locations.index.fields.title, bodyText, 'gold' %}
+{% header pages.locations.index.fields.title, pages.locations.index.fields.bodyText, 'gold' %}
 
 {% set components = pages.locations.index.fields.components %}
 

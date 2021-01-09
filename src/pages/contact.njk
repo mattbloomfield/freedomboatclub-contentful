@@ -1,0 +1,14 @@
+---
+permalink: "/contact/"
+layout: layout.njk
+title: Contact | Freedom Boat Club of Virginia
+description: Boating done right!
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.contact.fields.shortTitle }] %}
+
+{% header pages.contact.fields.title, '', 'gold' %}
+
+<div class="prose dark:prose">
+     {% documentToHtmlString pages.contact.fields.bodyText %}
+</div>

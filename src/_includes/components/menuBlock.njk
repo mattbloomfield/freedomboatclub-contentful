@@ -4,7 +4,7 @@
 
         {% for menuItem in relations.menuItems.items %}
             {% if menuItem.sys.id == menuItemId %}
-                {% mainMenuItem menuItem.fields.label, menuItem.fields.page.fields.slug, menuItem.fields.page.fields %}
+                {% mainMenuItem menuItem.fields %}
             {% endif %}
         {% endfor %}
 

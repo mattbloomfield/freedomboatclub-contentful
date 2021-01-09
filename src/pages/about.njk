@@ -1,0 +1,17 @@
+---
+layout: layout.njk
+slug: "{{ pages.about.fields.slug }}"
+eleventyComputed:
+     title: "{{ pages.about.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.about.fields.seoDescription }}"
+permalink: "subdir/{{ slug }}/index.html"
+
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.about.fields.shortTitle }] %}
+
+{% header pages.about.fields.title, '', 'gold' %}
+
+<div class="prose dark:prose">
+     {% documentToHtmlString pages.about.fields.bodyText %}
+</div>

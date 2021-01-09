@@ -7,11 +7,7 @@ description: Our Lake Anna location boasts 22 boats available and 4 types of sch
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle, loc: pages.locations.index.fields.slug}, {label: pages.locations.lakeAnna.fields.shortTitle }] %}
 
-{% set bodyText = '' %}
-{% for paragraph in pages.locations.lakeAnna.fields.bodyText.content[0].content %}
-    {% set bodyText = bodyText ~ paragraph.value %}
-{% endfor %}
-{% header pages.locations.lakeAnna.fields.title, bodyText, 'blue' %}
+{% header pages.locations.lakeAnna.fields.title, pages.locations.lakeAnna.fields.bodyText, 'blue' %}
 
 {% set components = pages.locations.lakeAnna.fields.components %}
 {% include '../../_includes/pageComponents.njk' %}

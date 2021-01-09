@@ -1,0 +1,14 @@
+---
+permalink: "/privacy-policy/"
+layout: layout.njk
+title: Privacy Policy | Freedom Boat Club of Virginia
+description: Boating done right!
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.privacyPolicy.fields.shortTitle }] %}
+
+{% header pages.privacyPolicy.fields.title, '', 'gold' %}
+
+<div class="prose dark:prose">
+     {% documentToHtmlString pages.privacyPolicy.fields.bodyText %}
+</div>

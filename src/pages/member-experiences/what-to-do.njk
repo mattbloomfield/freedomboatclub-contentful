@@ -7,12 +7,7 @@ description: Find out what members like to do on the water in ${location}
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.whatToDo.fields.shortTitle}] %}
 
-{% set bodyText = '' %}
-{% for paragraph in pages.memberExperiences.whatToDo.fields.bodyText.content[0].content %}
-    {% set bodyText = bodyText ~ paragraph.value %}
-{% endfor %}
-
-{% header pages.memberExperiences.whatToDo.fields.title, bodyText, 'blue' %}
+{% header pages.memberExperiences.whatToDo.fields.title, pages.memberExperiences.whatToDo.fields.bodyText, 'blue' %}
 
 {% set components = pages.memberExperiences.whatToDo.fields.components %}
 {% include '../../_includes/pageComponents.njk' %}
