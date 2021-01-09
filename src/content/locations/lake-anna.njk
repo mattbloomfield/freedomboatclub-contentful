@@ -1,0 +1,50 @@
+---
+layout: layout.njk
+eleventyComputed:
+     title: "{{ pages.locations.lakeAnna.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.locations.lakeAnna.fields.seoDescription }}"
+     slug: "{{ pages.locations.lakeAnna.fields.slug }}"
+---
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle, loc: pages.locations.index.fields.slug}, {label: pages.locations.lakeAnna.fields.shortTitle }] %}
+
+{% header pages.locations.lakeAnna.fields.title, pages.locations.lakeAnna.fields.bodyText, 'blue' %}
+
+{% set components = pages.locations.lakeAnna.fields.components %}
+{% include '../../_includes/pageComponents.njk' %}
+
+<script>
+var FBC = FBC || {};
+FBC.locations = {
+    init: () => {
+        const videos = document.querySelectorAll('#Options > a');
+        videos.forEach(video=> {
+            console.log('video', video);
+            video.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                console.log('opening modal...');
+                FBC.modal.create('boat', {
+                    header: video.dataset.label,
+                    subheader: video.dataset.summary,
+                    body: `
+                    <p></p>
+                    <div class="pb-aspect-ratio relative mt-8 mb-4 overflow-hidden rounded" style="width: 800px; max-width: 100%;">
+                        <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/${video.dataset.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    </div>
+                    `,
+                    buttons: [{
+                        text: 'Instant Tour',
+                        location: '/'
+                    }],
+                },
+                {
+                    size: 'lg'
+                })
+            });
+        });
+    },
+};
+
+FBC.locations.init();
+</script>
+

@@ -1,8 +1,11 @@
 ---
-permalink: "/training-and-insurance/"
 layout: layout.njk
-title: Training & Insurance
-description: Our Stafford location boasts 22 boats available and 4 types of schooners
+changefreq: monthly
+priority: .75
+eleventyComputed:
+     title: "{{ pages.trainingAndInsurance.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.trainingAndInsurance.fields.seoDescription }}"
+     slug: "{{ pages.trainingAndInsurance.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.trainingAndInsurance.index.fields.shortTitle }] %}

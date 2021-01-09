@@ -1,8 +1,11 @@
 ---
-permalink: "/privacy-policy/"
 layout: layout.njk
-title: Privacy Policy | Freedom Boat Club of Virginia
-description: Boating done right!
+changefreq: monthly
+priority: .25
+eleventyComputed:
+     title: "{{ pages.privacyPolicy.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.privacyPolicy.fields.seoDescription }}"
+     slug: "{{ pages.privacyPolicy.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.privacyPolicy.fields.shortTitle }] %}

@@ -8,7 +8,7 @@ const client = contentful.createClient({
 // This API call will request an entry with the specified ID from the space defined at the top, using a space-specific access token.
 
 module.exports = async () => {
-    return client.getEntry('2WjrNqTNbLcAC0Xw7So6bN')
+    return client.getEntry('4XcTc4DTHYoujMKWnRv3wU')
         .then((entry) => {
             return entry
         })

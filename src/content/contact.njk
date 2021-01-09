@@ -1,8 +1,12 @@
 ---
-permalink: "/contact/"
 layout: layout.njk
-title: Contact | Freedom Boat Club of Virginia
-description: Boating done right!
+changefreq: monthly
+priority: .75
+eleventyComputed:
+     title: "{{ pages.contact.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.contact.fields.seoDescription }}"
+     slug: "{{ pages.contact.fields.slug }}"
+
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.contact.fields.shortTitle }] %}

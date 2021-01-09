@@ -1,8 +1,11 @@
 ---
-permalink: "/locations/"
 layout: layout.njk
-title: Locations
-description: Choose a location to see the available boats
+changefreq: monthly
+priority: .75
+eleventyComputed:
+     title: "{{ pages.locations.index.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.locations.index.fields.seoDescription }}"
+     slug: "{{ pages.locations.index.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.locations.index.fields.shortTitle }] %}

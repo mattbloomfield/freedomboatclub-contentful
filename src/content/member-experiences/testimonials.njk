@@ -1,8 +1,11 @@
 ---
-permalink: "/member-experiences/testimonials/"
 layout: layout.njk
-title: Member Testimonials
-description: Find out what members like to do on the water in ${location}
+changefreq: daily
+priority: .75
+eleventyComputed:
+     title: "{{ pages.memberExperiences.testimonials.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.memberExperiences.testimonials.fields.seoDescription }}"
+     slug: "{{ pages.memberExperiences.testimonials.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.testimonials.fields.shortTitle}] %}

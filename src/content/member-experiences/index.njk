@@ -1,8 +1,11 @@
 ---
-permalink: "/member-experiences/"
 layout: layout.njk
-title: Member Experiences
-description: Choose an option to see the member experiences
+changefreq: monthly
+priority: .75
+eleventyComputed:
+     title: "{{ pages.memberExperiences.index.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.memberExperiences.index.fields.seoDescription }}"
+     slug: "{{ pages.memberExperiences.index.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle}] %}

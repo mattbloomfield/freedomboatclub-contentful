@@ -1,0 +1,13 @@
+---
+layout: layout.njk
+changefreq: daily
+priority: 1
+eleventyComputed:
+     title: "{{ pages.index.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.index.fields.seoDescription }}"
+     slug: "{{ pages.index.fields.slug }}"
+---
+
+{% set components = pages.index.fields.components %}
+
+{% include '../_includes/pageComponents.njk' %}

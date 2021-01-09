@@ -10,8 +10,9 @@ const client = contentful.createClient({
 
 module.exports = function (eleventyConfig) {
   // PASSTHROUGHS
-  eleventyConfig.addPassthroughCopy("src/pages/assets/images");
-  eleventyConfig.addPassthroughCopy("src/pages/assets/js");
+  eleventyConfig.addPassthroughCopy("src/content/assets/images");
+  eleventyConfig.addPassthroughCopy("src/content/assets/js");
+  eleventyConfig.addPassthroughCopy("src/content/assets/xsl");
 
   //FILTERS
   eleventyConfig.addFilter("split", require('./eleventy/filters/split.js'));
@@ -35,12 +36,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode('fullWidthAd', require('./eleventy/shortcode/ads/fullwidth.js'))
   eleventyConfig.addShortcode("blockQuote", require('./eleventy/shortcode/quotes/block.js'));
   eleventyConfig.addShortcode("fullWidthQuote", require('./eleventy/shortcode/quotes/fullWidth.js'));
-
-
+  eleventyConfig.addShortcode("json", require('./eleventy/shortcode/json.js'));
 
   return {
     dir: {
-      input: "src/pages",
+      input: "src/content",
       includes: "../_includes",
       output: "dist",
       data: "../_data",

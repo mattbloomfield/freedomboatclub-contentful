@@ -1,0 +1,19 @@
+----
+layout: layout.njk
+changefreq: monthly
+priority: .75
+eleventyComputed:
+     title: "{{ pages.index.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.index.fields.seoDescription }}"
+     slug: "{{ pages.index.fields.slug }}"
+
+----
+
+{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.index.index.fields.shortTitle }] %}
+
+{% header pages.index.index.fields.title, pages.index.index.fields.bodyText, 'gold' %}
+
+{% set components = pages.index.index.fields.components %}
+
+{% include '../_includes/pageComponents.njk' %}
+

@@ -11,13 +11,14 @@
     "dev:debug": "DEBUG=* npm run dev",
     "eleventy:default": "eleventy",
     "eleventy:watch": "eleventy --watch",
-    "styles:prod": "postcss src/pages/assets/css/*.css --output dist/assets/css/main.css",
-    "styles:dev": "postcss src/pages/assets/css/*.css --output dist/assets/css/main.css",
+    "styles:prod": "postcss src/content/assets/css/*.css --output dist/assets/css/main.css",
+    "styles:dev": "postcss src/content/assets/css/*.css --output dist/assets/css/main.css",
     "scripts:prod": "webpack --mode=production",
     "scripts:dev": "webpack --mode=development",
     "serve": "light-server -c .lightserverrc",
     "prod": "npm run production",
     "production": "npm-run-all clean styles:prod scripts:prod eleventy:default",
+    "production:debug": "DEBUG=* npm-run-all clean styles:prod scripts:prod eleventy:default",
     "debug": "DEBUG=* npx eleventy"
   },
   "keywords": [],
@@ -47,5 +48,8 @@
     "tailwindcss": "^2.0.1",
     "webpack": "^5.10.0",
     "webpack-cli": "^4.2.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.1"
   }
 }

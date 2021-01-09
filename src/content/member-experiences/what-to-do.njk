@@ -1,8 +1,9 @@
 ---
-permalink: "/member-experiences/what-to-do/"
 layout: layout.njk
-title: What to Do
-description: Find out what members like to do on the water in ${location}
+eleventyComputed:
+     title: "{{ pages.memberExperiences.whatToDo.fields.shortTitle }} | Freedom Boat Club"
+     description: "{{ pages.memberExperiences.whatToDo.fields.seoDescription }}"
+     slug: "{{ pages.memberExperiences.whatToDo.fields.slug }}"
 ---
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.whatToDo.fields.shortTitle}] %}
