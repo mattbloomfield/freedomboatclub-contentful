@@ -16,6 +16,8 @@
     "scripts:prod": "webpack --mode=production",
     "scripts:dev": "webpack --mode=development",
     "serve": "light-server -c .lightserverrc",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production npm-run-all clean styles:prod scripts:prod eleventy:default",
     "debug": "DEBUG=* npx eleventy"
   },
   "keywords": [],
