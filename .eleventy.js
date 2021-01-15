@@ -37,6 +37,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("blockQuote", require('./eleventy/shortcode/quotes/block.js'));
   eleventyConfig.addShortcode("fullWidthQuote", require('./eleventy/shortcode/quotes/fullWidth.js'));
   eleventyConfig.addShortcode("json", require('./eleventy/shortcode/json.js'));
+  eleventyConfig.addShortcode("testimonial", require('./eleventy/shortcode/testimonial.js'));
 
   return {
     dir: {

@@ -6,10 +6,10 @@
       {% include "./components/instructions.njk" %}
 
     {% elif type == 'menuBlock' %}
-      <pre><code>
-      {{comp | json}}
-      </pre></code>
       {% include "./components/menuBlock.njk" %}
+
+    {% elif type == 'testimonialsMenu' %}
+      {% include "./components/testimonialsMenu.njk" %}
 
     {% elif type == 'heroVideo' %}
      {% heroVideo comp.fields.youTubeUrl | youTubeId %}
