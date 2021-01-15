@@ -1,11 +1,15 @@
 {% for comp in components %}
+    <code class="block">{{ comp.sys.contentType.sys.id }}</code>
     {% set type = comp.sys.contentType.sys.id %}
 
     {% if type == 'instructions' %}
       {% include "./components/instructions.njk" %}
 
     {% elif type == 'menuBlock' %}
-      {% include "./components/menuBlock.njk"%}
+      <pre><code>
+      {{comp | json}}
+      </pre></code>
+      {% include "./components/menuBlock.njk" %}
 
     {% elif type == 'heroVideo' %}
      {% heroVideo comp.fields.youTubeUrl | youTubeId %}
@@ -14,7 +18,14 @@
      {% fullWidthQuote comp.fields.quoteText %}
 
     {% elif type == 'blockAd' %}
-     {% slimAd comp.fields.text %}
+      {% if comp.fields.format == 'Full Width'  %}
+        <div class="text-xs">{{ comp.fields.format }}</div>
+        {% fullWidthAd comp.fields %}
+      {% elif comp.fields.format == 'Slim' %}
+        <div class="text-xs">{{ comp.fields.format }}</div>
+        {% slimAd comp.fields %}
+      {% endif %}
+     
 
   {% endif %}
 

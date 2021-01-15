@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("youTubeId", require('./eleventy/filters/youTubeId.js'));
   eleventyConfig.addFilter('htmlDateString', require('./eleventy/filters/htmlDateString.js'))
   eleventyConfig.addFilter('httpUrl', require('./eleventy/filters/httpUrl.js'))
+  eleventyConfig.addFilter('json', require('./eleventy/filters/json.js'))
 
   // SHORTCODES
   eleventyConfig.addShortcode("documentToHtmlString", require('./eleventy/shortcode/documentToHtmlString.js'));
@@ -32,7 +33,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("instructions", require('./eleventy/shortcode/instructions.js'));
   eleventyConfig.addShortcode('heroVideo', require('./eleventy/shortcode/heroVideo.js'))
   eleventyConfig.addShortcode('slimAd', require('./eleventy/shortcode/ads/slim.js'))
-  eleventyConfig.addShortcode("blockAd", require('./eleventy/shortcode/ads/block.js'));
   eleventyConfig.addShortcode('fullWidthAd', require('./eleventy/shortcode/ads/fullwidth.js'))
   eleventyConfig.addShortcode("blockQuote", require('./eleventy/shortcode/quotes/block.js'));
   eleventyConfig.addShortcode("fullWidthQuote", require('./eleventy/shortcode/quotes/fullWidth.js'));

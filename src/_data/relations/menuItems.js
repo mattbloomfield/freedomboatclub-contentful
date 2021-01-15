@@ -11,8 +11,9 @@ module.exports = async () => {
     return client.getEntries({
         'content_type': 'menuItem'
       })
-        .then((entry) => {
-            return entry
+        .then((menuItems) => {
+            console.log('menuItems', JSON.stringify(menuItems))
+            return menuItems
         })
         .catch((err) => console.log(err))
 };

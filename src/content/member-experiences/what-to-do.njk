@@ -1,14 +1,26 @@
 ---
 layout: layout.njk
 eleventyComputed:
-     title: "{{ pages.memberExperiences.whatToDo.fields.shortTitle }} | Freedom Boat Club"
-     description: "{{ pages.memberExperiences.whatToDo.fields.seoDescription }}"
-     slug: "{{ pages.memberExperiences.whatToDo.fields.slug }}"
+  title: "{{ pages.memberExperiences.whatToDo.fields.shortTitle }} | Freedom Boat Club"
+  description: "{{ pages.memberExperiences.whatToDo.fields.seoDescription }}"
+  slug: "{{ pages.memberExperiences.whatToDo.fields.slug }}"
 ---
 
-{% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.memberExperiences.index.fields.shortTitle, loc: pages.memberExperiences.index.fields.slug}, {label: pages.memberExperiences.whatToDo.fields.shortTitle}] %}
+{% breadcrumb[
+  {
+    label: pages.index.fields.shortTitle,
+    loc: pages.index.fields.slug
+  }, {
+    label: pages.memberExperiences.index.fields.shortTitle,
+    loc: pages.memberExperiences.index.fields.slug
+  }, {
+    label: pages.memberExperiences.whatToDo.fields.shortTitle
+  }
+] %}
 
-{% header pages.memberExperiences.whatToDo.fields.title, pages.memberExperiences.whatToDo.fields.bodyText, 'blue' %}
+{% header pages.memberExperiences.whatToDo.fields.title,
+pages.memberExperiences.whatToDo.fields.bodyText,
+'blue' %}
 
 {% set components = pages.memberExperiences.whatToDo.fields.components %}
 {% include '../../_includes/pageComponents.njk' %}
@@ -16,52 +28,115 @@ eleventyComputed:
 <div id="LocationSwitcher" class="grid grid-cols-4">
   <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Woodbridge</span>
-    <input type="radio" class="hidden" name="Location">
+    <input type="radio" class="hidden" name="Location" value="woodbridge">
   </label>
   <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Stafford</span>
-    <input type="radio" class="hidden" name="Location">
+    <input type="radio" class="hidden" name="Location" value="stafford">
   </label>
   <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Lake Anna</span>
-    <input type="radio" class="hidden" name="Location">
+    <input type="radio" class="hidden" name="Location" value="lakeAnna">
   </label>
   <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Richmond</span>
-    <input type="radio" class="hidden" name="Location">
+    <input type="radio" class="hidden" name="Location" value="richmond">
   </label>
 </div>
 
 <div id="Options" class="grid grid-cols-3 w-full my-8 gap-x-4  gap-y-8">
-  {% videoButton 'uc6AZZoyJc0', 'D.C.', '', 'above' %}
-  {% videoButton 'uc6AZZoyJc0', 'Fishing', '', 'above' %}
+  {% for activity in pages.locations.stafford.fields.activities %}
+    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-stafford', activity.fields %}
+  {% endfor %}
+  {% for activity in pages.locations.woodbridge.fields.activities %}
+    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-woodbridge', activity.fields %}
+  {% endfor %}
+  {% for activity in pages.locations.lakeAnna.fields.activities %}
+    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-lakeAnna', activity.fields %}
+  {% endfor %}
+  {% for activity in pages.locations.richmond.fields.activities %}
+    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-richmond', activity.fields %}
+  {% endfor %}
 </div>
-
-{% slimAd %}
 
 <script>
   const labels = document.querySelectorAll('#LocationSwitcher label');
-  labels[0].querySelector('input').checked = true;
+  labels[0]
+    .querySelector('input')
+    .checked = true;
   deselectAll(labels)
-  selectLoc(labels[0]);
-  labels.forEach(label=> {
-    label.addEventListener('change', (ev)=> {
-      deselectAll(labels)
-      selectLoc(label);
-    })
-  })
+  selectLoc(labels[0], labels[0].querySelector('input').value);
+  labels.forEach(label => {
+    label
+      .querySelector('input')
+      .addEventListener('change', (ev) => {
+        deselectAll(labels);
+        selectLoc(label, ev.target.value);
+      })
+  });
 
-  function selectLoc(label) {
-    label.classList.add('border-blue-fbc');
-    label.classList.add('text-blue-fbc');
-    label.classList.add('font-bold');
-    // do some content stuff too
-  }
-  function deselectAll(labels) {
-    labels.forEach(label=> {
-      label.classList.remove('border-blue-fbc');
-      label.classList.remove('text-blue-fbc');
-      label.classList.remove('font-bold');
-    })
-  }
+  var activities = document.querySelectorAll(`.activity`);
+  activities.forEach(activity => {
+    activity.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      activity.addEventListener('click', function (ev) {
+        FBC
+          .modal
+          .create('activity', {
+            header: activity.dataset.label,
+            subheader: activity.dataset.summary,
+            body: `
+              <p></p>
+              <div class="pb-aspect-ratio relative mt-8 mb-4 overflow-hidden rounded" style="width: 800px; max-width: 100%;">
+                  <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/${activity.dataset.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+              </div>
+              `,
+            buttons: [
+              {
+                text: 'Instant Tour',
+                location: '/'
+              }
+            ]
+          }, {size: 'lg'})
+      });
+    });
+  });
+
+    function selectLoc(label, location) {
+      label
+        .classList
+        .add('border-blue-fbc');
+      label
+        .classList
+        .add('text-blue-fbc');
+      label
+        .classList
+        .add('font-bold');
+      var activities = document.getElementsByClassName(`location-${location}`);
+      for (var i = 0; i < activities.length; i++) {
+        activities[i]
+          .classList
+          .remove('hidden');
+      }
+    }
+    function deselectAll(labels) {
+      labels.forEach(label => {
+        label
+          .classList
+          .remove('border-blue-fbc');
+        label
+          .classList
+          .remove('text-blue-fbc');
+        label
+          .classList
+          .remove('font-bold');
+        var activities = document.getElementsByClassName(`activity`);
+        for (var i = 0; i < activities.length; i++) {
+          activities[i]
+            .classList
+            .add('hidden');
+        }
+
+      })
+    }
 </script>
