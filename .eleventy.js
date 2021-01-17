@@ -9,6 +9,11 @@ const client = contentful.createClient({
 });
 
 module.exports = function (eleventyConfig) {
+
+  // CONFIGURE WATCH
+  eleventyConfig.addWatchTarget("eleventy/**/*.js");
+  eleventyConfig.addWatchTarget("eleventy/**/**/*.js");
+
   // PASSTHROUGHS
   eleventyConfig.addPassthroughCopy("src/content/assets/images");
   eleventyConfig.addPassthroughCopy("src/content/assets/js");
@@ -38,6 +43,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("fullWidthQuote", require('./eleventy/shortcode/quotes/fullWidth.js'));
   eleventyConfig.addShortcode("json", require('./eleventy/shortcode/json.js'));
   eleventyConfig.addShortcode("testimonial", require('./eleventy/shortcode/testimonial.js'));
+  eleventyConfig.addShortcode("boatMenu", require('./eleventy/shortcode/boatMenu.js'));
 
   return {
     dir: {
