@@ -10,6 +10,7 @@ const client = contentful.createClient({
 module.exports = async () => {
     return client.getEntry('4XcTc4DTHYoujMKWnRv3wU')
         .then((entry) => {
+            console.log('stafford', JSON.stringify(entry));
             return entry
         })
         .catch((err) => console.log(err))
