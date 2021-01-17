@@ -1,5 +1,4 @@
 {% for comp in components %}
-    <code class="block">{{ comp.sys.contentType.sys.id }}</code>
     {% set type = comp.sys.contentType.sys.id %}
 
     {% if type == 'instructions' %}
@@ -19,10 +18,8 @@
 
     {% elif type == 'blockAd' %}
       {% if comp.fields.format == 'Full Width'  %}
-        <div class="text-xs">{{ comp.fields.format }}</div>
         {% fullWidthAd comp.fields %}
       {% elif comp.fields.format == 'Slim' %}
-        <div class="text-xs">{{ comp.fields.format }}</div>
         {% slimAd comp.fields %}
       {% endif %}
      

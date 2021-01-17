@@ -23,18 +23,18 @@ FBC.modal = {
         modal.classList.add('modal', 'z-40', 'fixed', 'inset-0', 'flex', 'items-center', 'justify-center');
         let buttons = ``;
         if (components.buttons) components.buttons.forEach(button => {
-            buttons += `<a class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" href="${button.location}">${button.text}</a>`
+            buttons += `<a class="btn btn-blue" href="${button.location}">${button.text}</a>`
         });
         modal.innerHTML = `
             <div id="Overlay" class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-            <div class="modal-container relative bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div id="ModalHeader" class="p-2">
-                    <h3 class="text-2xl text-center font-bold">${components.header}</h3>
-                    <h4 class="text-xl text-center uppercase">${components.subheader}</h4>
-                    <button id="ModalCloseButton" class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">${FBC.svg.get('close', 'text-gray-700')}<span class="text-sm">(Esc)</span></button>
+            <div class="modal-container relative w-11/12 max-w-full md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                <div id="ModalHeader" class="p-2 pt-8">
+                    <h2 class="text-3xl text-center font-bold font-headline text-white mb-2">${components.header}</h2>
+                    <h3 class="text-xl text-center uppercase font-headline text-white">${components.subheader}</h3>
+                    <button id="ModalCloseButton" class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-blue-fbc text-sm z-50">${FBC.svg.get('close', 'text-gray-200')}<span class="text-sm">(Esc)</span></button>
                 </div>
-                <div id="ModalBody" class="p-8 text-center">${components.body}</div>
-                <div id="ModalButtons" class="flex justify-end pt-2">${buttons}</div>
+                <div id="ModalBody" class="py-4 px-8 text-center">${components.body}</div>
+                <div id="ModalButtons" class="flex justify-center py-4">${buttons}</div>
             </div>
         `;
         document.getElementsByTagName('body')[0].prepend(modal);

@@ -1,0 +1,16 @@
+---
+permalink: /api/boats.json
+---
+{
+{% for boat in relations.boats.items %}
+    "{{boat.sys.id}}": {
+        "name": "{{boat.fields.name}}",
+        "description": "{% documentToHtmlString boat.fields.description %}",
+        "youTubeUrl": "{{boat.fields.youTubeUrl}}",
+        "meta1": "{{boat.fields.meta1}}",
+        "meta2": "{{boat.fields.meta2}}",
+        "meta3": "{{boat.fields.meta3}}"
+    }
+    {{ '' if loop.last else ',' }}
+{% endfor %}
+}

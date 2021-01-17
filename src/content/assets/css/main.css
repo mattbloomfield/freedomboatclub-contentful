@@ -52,6 +52,12 @@
 .modal {
   transition: opacity 0.25s ease;
 }
+
+.modal-container {
+  background: linear-gradient(to bottom, #002F5F 0% ,#002F5F 33% ,#FFF 33% ,#FFF 100%);
+
+}
+
 body.modal-active {
   overflow-x: hidden;
   overflow-y: visible !important;

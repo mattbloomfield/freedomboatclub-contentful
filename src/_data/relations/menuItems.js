@@ -12,7 +12,6 @@ module.exports = async () => {
         'content_type': 'menuItem'
       })
         .then((menuItems) => {
-            console.log('menuItems', JSON.stringify(menuItems))
             return menuItems
         })
         .catch((err) => console.log(err))

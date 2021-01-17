@@ -26,36 +26,36 @@ pages.memberExperiences.whatToDo.fields.bodyText,
 {% include '../../_includes/pageComponents.njk' %}
 
 <div id="LocationSwitcher" class="grid grid-cols-4">
-  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+  <label class="border-t-8 border-gray-200 text-xs md:text-lg lg:text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Woodbridge</span>
     <input type="radio" class="hidden" name="Location" value="woodbridge">
   </label>
-  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+  <label class="border-t-8 border-gray-200 text-xs md:text-lg lg:text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Stafford</span>
     <input type="radio" class="hidden" name="Location" value="stafford">
   </label>
-  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+  <label class="border-t-8 border-gray-200 text-xs md:text-lg lg:text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Lake Anna</span>
     <input type="radio" class="hidden" name="Location" value="lakeAnna">
   </label>
-  <label class="border-t-8 border-gray-200 text-xl py-4 text-center text-gray-500 cursor-pointer">
+  <label class="border-t-8 border-gray-200 text-xs md:text-lg lg:text-xl py-4 text-center text-gray-500 cursor-pointer">
     <span>Richmond</span>
     <input type="radio" class="hidden" name="Location" value="richmond">
   </label>
 </div>
 
-<div id="Options" class="grid grid-cols-3 w-full my-8 gap-x-4  gap-y-8">
+<div id="Options" class="grid grid-cols-2 md:grid-cols-3 w-full my-8 gap-x-4  gap-y-8">
   {% for activity in pages.locations.stafford.fields.activities %}
-    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-stafford', activity.fields %}
+    {% videoButton 'uc6AZZoyJc0', activity.sys.id, activity.fields.title, '', 'above', 'activity location-stafford', activity.fields %}
   {% endfor %}
   {% for activity in pages.locations.woodbridge.fields.activities %}
-    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-woodbridge', activity.fields %}
+    {% videoButton 'uc6AZZoyJc0', activity.sys.id, activity.fields.title, '', 'above', 'activity location-woodbridge', activity.fields %}
   {% endfor %}
   {% for activity in pages.locations.lakeAnna.fields.activities %}
-    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-lakeAnna', activity.fields %}
+    {% videoButton 'uc6AZZoyJc0', activity.sys.id, activity.fields.title, '', 'above', 'activity location-lakeAnna', activity.fields %}
   {% endfor %}
   {% for activity in pages.locations.richmond.fields.activities %}
-    {% videoButton 'uc6AZZoyJc0', activity.fields.title, '', 'above', 'activity location-richmond', activity.fields %}
+    {% videoButton 'uc6AZZoyJc0', activity.sys.id, activity.fields.title, '', 'above', 'activity location-richmond', activity.fields %}
   {% endfor %}
 </div>
 

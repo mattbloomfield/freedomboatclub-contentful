@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 w-full gap-x-4 my-8 gap-y-8 text-center">
+<div class="grid grid-cols-2 md:grid-cols-3 w-full gap-x-4 my-8 gap-y-8 text-center">
     {% for item in comp.fields.testimonials %}
         {% set testimonialId = item.sys.id %}
         {% for testimonial in relations.testimonials.items %}
@@ -8,8 +8,9 @@
         {% endfor %}
         {% if loop.index % 6 == 0 %}
             </div>
-            {% fullWidthAd {text: "Go get a job a-hole"} %}
-            <div class="grid grid-cols-3 w-full gap-x-4 my-8 gap-y-8 text-center">
+            {# TODO: Add a way to cycle in various ads/quotes here and choose them in the CSS #}
+            {% fullWidthAd {text: "Learn what it's like to forget what solid land feels like", backgroundColor: 'white'} %}
+            <div class="grid grid-cols-2 md:grid-cols-3 w-full gap-x-4 my-8 gap-y-8 text-center">
         {% endif %}
 {# TODO: Add adds every 6 #}
     {% endfor %}
