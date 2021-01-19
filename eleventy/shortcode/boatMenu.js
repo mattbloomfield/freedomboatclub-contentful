@@ -2,7 +2,7 @@ const { documentToHtmlString } = require("@contentful/rich-text-html-renderer");
 const youTubeId = require('../filters/youTubeId.js');
 const btoa = require('btoa')
 
-module.exports = function (pageBoats, allBoats) {
+module.exports = function (pageBoats = []) {
 
     const boats = {};
 
@@ -40,7 +40,7 @@ module.exports = function (pageBoats, allBoats) {
             `data-ytId="${boat.ytId}"`,
         ]
         html += `
-        <li class="boat grid font-headline bg-gray-200 shadow-lg" ${dataAttrs.join(' ')}>
+        <li class="boat grid font-headline bg-gray-200 shadow-lg cursor-pointer" ${dataAttrs.join(' ')}>
             <img src="https://i.ytimg.com/vi_webp/${boat.ytId}/maxresdefault.webp">
             <div class="p-4 text-center rounded shadow-lg">
                 <h3 class="text-xl font-bold">${boat.name}</h3>

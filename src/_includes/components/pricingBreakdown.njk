@@ -1,0 +1,17 @@
+<div id="PricingBreakdown" class="grid grid-cols-3 max-w-2xl mx-auto my-16 shadow-xl">
+    {% for tier in comp.fields.tiers %}
+        {% set tierId = tier.sys.id %}
+        {% for pricingTier in relations.pricingTiers.items %}
+            {% if pricingTier.sys.id == tierId %}
+                <div class="text-center grid grid-cols-1 gap-4 {% if loop.index == 2 %}bg-blue-fbc text-white {% else %} bg-gray-200 {% endif %} py-4 px-2">
+                    <h3 class="uppercase font-bold">{{ pricingTier.fields.name }}</h3>
+                    <h4 class="text-2xl">${{ pricingTier.fields.price }} <span class="text-sm">/ mo</span></h4>
+                    {% for meta in pricingTier.fields.meta %}
+                        <h4 class="font-bold">{{ meta.fields.text }}</h4>
+                    {% endfor %}
+                    <a href="#" class="btn btn-primary {% if loop.index == 2 %} bg-gold text-white {% else %} bg-blue-fbc text-white {% endif %}">Join Now</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

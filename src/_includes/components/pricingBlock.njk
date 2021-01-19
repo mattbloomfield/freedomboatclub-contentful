@@ -1,0 +1,7 @@
+{% for pBlock in comp.fields.blocks %}
+    {% for pricingBlock in relations.pricingBlocks.items %}
+        {% if pBlock.sys.id == pricingBlock.sys.id %}
+            {% priceBlock pricingBlock %}
+        {% endif %}
+    {% endfor %}
+{% endfor %}
