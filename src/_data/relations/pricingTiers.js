@@ -9,10 +9,11 @@ const client = contentful.createClient({
 
 module.exports = async () => {
     return client.getEntries({
-        'content_type': 'boat'
+        'content_type': 'pricingTier'
       })
-        .then((boats) => {
-            return boats
+        .then((pricingTier) => {
+            console.log('PRICING TIERS', JSON.stringify(pricingTier));
+            return pricingTier
         })
         .catch((err) => console.log(err))
 };

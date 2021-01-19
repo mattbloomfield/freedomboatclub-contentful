@@ -44,6 +44,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode("json", require('./eleventy/shortcode/json.js'));
   eleventyConfig.addShortcode("testimonial", require('./eleventy/shortcode/testimonial.js'));
   eleventyConfig.addShortcode("boatMenu", require('./eleventy/shortcode/boatMenu.js'));
+  eleventyConfig.addShortcode("priceBlock", require('./eleventy/shortcode/priceBlock.js'));
 
   return {
     dir: {

@@ -1,29 +1,41 @@
 {% for comp in components %}
-    {% set type = comp.sys.contentType.sys.id %}
 
-    {% if type == 'instructions' %}
-      {% include "./components/instructions.njk" %}
+  {% set type = comp.sys.contentType.sys.id %}
 
-    {% elif type == 'menuBlock' %}
-      {% include "./components/menuBlock.njk" %}
+  {% if type == 'instructions' %}
+    {% include "./components/instructions.njk" %}
 
-    {% elif type == 'testimonialsMenu' %}
-      {% include "./components/testimonialsMenu.njk" %}
+  {% elif type == 'menuBlock' %}
+    {% include "./components/menuBlock.njk" %}
 
-    {% elif type == 'heroVideo' %}
-     {% heroVideo comp.fields.youTubeUrl | youTubeId %}
+  {% elif type == 'testimonialsMenu' %}
+    {% include "./components/testimonialsMenu.njk" %}
 
-    {% elif type == 'blockQuote' %}
-     {% fullWidthQuote comp.fields.quoteText %}
+  {% elif type == 'heroVideo' %}
+    {% heroVideo comp.fields.youTubeUrl | youTubeId %}
 
-    {% elif type == 'blockAd' %}
-      {% if comp.fields.format == 'Full Width'  %}
-        {% fullWidthAd comp.fields %}
-      {% elif comp.fields.format == 'Slim' %}
-        {% slimAd comp.fields %}
-      {% endif %}
-     
+  {% elif type == 'blockQuote' %}
+    {% fullWidthQuote comp.fields.quoteText %}
 
+  {% elif type == 'blockAd' %}
+    {% if comp.fields.format == 'Full Width'  %}
+      {% fullWidthAd comp.fields %}
+    {% elif comp.fields.format == 'Slim' %}
+      {% slimAd comp.fields %}
+    {% endif %}
+    
+  {% elif type == 'pricingBlockContainer' %}
+    {% include "./components/pricingBlock.njk" %}
+
+  {% elif type == 'inlineHeader' %}
+    {% header comp.fields.headline, comp.fields.bodyText, 'blue' %}
+
+  {% elif type == 'faqItem' %}
+    {% include "./components/faqItem.njk" %}
+    
+  {% elif type == 'pricingBreakdown' %}
+    {% include "./components/pricingBreakdown.njk" %}
+    
   {% endif %}
 
 {% endfor %}

@@ -1,5 +1,5 @@
 ---
-layout: layout.njk
+layout: layout-wide.njk
 changefreq: monthly
 priority: .75
 eleventyComputed:
@@ -11,7 +11,7 @@ eleventyComputed:
 
 {% breadcrumb [{label: pages.index.fields.shortTitle, loc: pages.index.fields.slug}, {label: pages.pricing.fields.shortTitle }] %}
 
-{% header pages.pricing.fields.title, pages.pricing.fields.bodyText, 'gold' %}
+{# {% header pages.pricing.fields.title, pages.pricing.fields.bodyText, 'gold' %} #}
 
 {% set components = pages.pricing.fields.components %}
 
