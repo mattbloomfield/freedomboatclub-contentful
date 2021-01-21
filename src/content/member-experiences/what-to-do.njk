@@ -78,18 +78,16 @@ pages.memberExperiences.whatToDo.fields.bodyText,
   var activities = document.querySelectorAll(`.activity`);
   activities.forEach(activity => {
     activity.addEventListener('click', (ev) => {
-      ev.preventDefault();
-      activity.addEventListener('click', function (ev) {
         FBC
           .modal
           .create('activity', {
-            header: activity.dataset.label,
-            subheader: activity.dataset.summary,
+            header: activity.dataset.title,
+            subheader: '',
             body: `
-              <p></p>
               <div class="pb-aspect-ratio relative mt-8 mb-4 overflow-hidden rounded" style="width: 800px; max-width: 100%;">
                   <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/${activity.dataset.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
               </div>
+              <div class="prose dark:prose-dark">${activity.dataset.summary}</div>
               `,
             buttons: [
               {
@@ -98,7 +96,6 @@ pages.memberExperiences.whatToDo.fields.bodyText,
               }
             ]
           }, {size: 'lg'})
-      });
     });
   });
 

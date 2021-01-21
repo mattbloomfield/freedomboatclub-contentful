@@ -15,3 +15,39 @@ eleventyComputed:
 {% set components = pages.trainingAndInsurance.index.fields.components %}
 
 {% include '../_includes/pageComponents.njk' %}
+
+<script>
+var FBC = FBC || {};
+FBC.training = {
+    init: () => {
+        const videos = document.querySelectorAll('#Options a');
+        videos.forEach(video=> {
+            console.log('video', video);
+            video.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                console.log('opening modal...');
+                FBC.modal.create('training', {
+                    header: video.dataset.label,
+                    body: `
+                        <div class="pb-aspect-ratio relative mt-2 mb-4 overflow-hidden rounded max-w-full w-full" >
+                            <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/${video.dataset.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                        <div class="prose dark:prose-dark mt-4">
+                            ${video.dataset.description}
+                        </div>
+                    `,
+                    buttons: [{
+                        text: 'Instant Tour',
+                        location: '/'
+                    }],
+                },
+                {
+                    size: 'lg'
+                })
+            });
+        });
+    },
+};
+
+FBC.training.init();
+</script>

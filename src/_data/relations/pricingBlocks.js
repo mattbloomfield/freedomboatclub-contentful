@@ -12,7 +12,6 @@ module.exports = async () => {
         'content_type': 'priceBlock'
       })
         .then((priceBlock) => {
-            console.log('priceBlock', JSON.stringify(priceBlock))
             return priceBlock
         })
         .catch((err) => console.log(err))

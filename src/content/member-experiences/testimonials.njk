@@ -14,3 +14,51 @@ eleventyComputed:
 
 {% set components = pages.memberExperiences.testimonials.fields.components %}
 {% include '../../_includes/pageComponents.njk' %}
+
+<script>
+
+var FBC = window.FBC || {};
+
+FBC.testimonials = {
+     init: function () {
+          var testimonials = document.querySelectorAll(`.testimonial`);
+          testimonials.forEach(testimonial => {
+               console.log('adding click event listener', testimonial)
+               testimonial.addEventListener('click', (ev) => {
+                    FBC
+                    .modal
+                    .create('testimonial', {
+                         header: testimonial.dataset.title,
+                         subheader: '',
+                         body: `
+                         <div class="pb-aspect-ratio relative mt-8 mb-4 overflow-hidden rounded" style="width: 800px; max-width: 100%;">
+                              <iframe class="absolute top-0 left-0 w-full h-full z-20" src="https://www.youtube.com/embed/${testimonial.dataset.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                         </div>
+                         <div class="prose dark:prose-dark">${testimonial.dataset.description}</div>
+                         `,
+                         buttons: [
+                              {
+                                   text: 'Instant Tour',
+                                   location: '/'
+                              }
+                         ]
+                    },
+                    {size: 'lg'})
+               });
+          });
+     }
+}
+
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}  
+
+document.addEventListener('DOMContentLoaded', FBC.testimonials.init, false);
+
+</script>

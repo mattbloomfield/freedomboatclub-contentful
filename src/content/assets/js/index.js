@@ -27,14 +27,16 @@ FBC.modal = {
         });
         modal.innerHTML = `
             <div id="Overlay" class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-            <div class="modal-container relative w-11/12 max-w-full md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div id="ModalHeader" class="p-2 pt-8">
-                    <h2 class="text-3xl text-center font-bold font-headline text-white mb-2">${components.header}</h2>
-                    <h3 class="text-xl text-center uppercase font-headline text-white">${components.subheader}</h3>
-                    <button id="ModalCloseButton" class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-blue-fbc text-sm z-50">${FBC.svg.get('close', 'text-gray-200')}<span class="text-sm">(Esc)</span></button>
+            <div class="modal-container relative w-11/12 max-w-full md:max-w-2xl mx-auto rounded shadow-lg z-50 max-h-screen overflow-y-scroll">
+                <div class="modal-inner-container">
+                    <div id="ModalHeader" class="p-2 pt-8">
+                        <h2 class="text-3xl text-center font-bold font-headline text-white mb-2">${components.header || ''}</h2>
+                        <h3 class="text-xl text-center uppercase font-headline text-white">${components.subheader || ''}</h3>
+                        <button id="ModalCloseButton" class="absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-blue-fbc text-sm z-50">${FBC.svg.get('close', 'text-gray-200')}<span class="text-sm">(Esc)</span></button>
+                    </div>
+                    <div id="ModalBody" class="py-4 px-8 text-center">${components.body || ''}</div>
+                    <div id="ModalButtons" class="flex justify-center py-4">${buttons || ''}</div>
                 </div>
-                <div id="ModalBody" class="py-4 px-8 text-center">${components.body}</div>
-                <div id="ModalButtons" class="flex justify-center py-4">${buttons}</div>
             </div>
         `;
         document.getElementsByTagName('body')[0].prepend(modal);
