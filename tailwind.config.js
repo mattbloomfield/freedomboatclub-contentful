@@ -1,5 +1,13 @@
 module.exports = {
-  purge: ['./src/content/assets/css/*.css', './src/content/*.njk', './src/content/**/*.njk', './src/_includes/**/*.njk', './eleventy/**/*.js', './eleventy/**/**/*.js'],
+  purge: [
+    './src/content/assets/css/*.css',
+    './src/content/assets/js/*.js',
+    './src/content/*.njk',
+    './src/content/**/*.njk',
+    './src/_includes/**/*.njk',
+    './eleventy/**/*.js',
+    './eleventy/**/**/*.js'
+  ],
   darkMode: 'media',
   theme: {
     fontFamily: {
