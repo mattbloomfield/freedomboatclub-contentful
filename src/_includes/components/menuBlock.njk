@@ -9,13 +9,13 @@
 
         {% for videoMenuItem in relations.videoMenuItems.items %}
             {% if videoMenuItem.sys.id == menuItemId %}
-                {% videoButton videoMenuItem.fields.youTubeUrl | youTubeId, videoMenuItem.sys.id, videoMenuItem.fields.label, videoMenuItem.fields.summary, 'below', '', videoMenuItem.fields %}
+                {% videoButton videoMenuItem.fields.youTubeUrl | youTubeId, null, videoMenuItem.sys.id, videoMenuItem.fields.label, videoMenuItem.fields.summary, 'below', '', videoMenuItem.fields %}
             {% endif %}
         {% endfor %}
 
         {% for testimonial in relations.testimonials.items %}
             {% if testimonial.sys.id == menuItemId %}
-                {% videoButton testimonial.fields.youTubeUrl | youTubeId, testimonial.sys.id, testimonial.fields.title, testimonial.fields.summary, 'below', '', testimonial.fields %}
+                {% videoButton testimonial.fields.youTubeUrl | youTubeId, null, testimonial.sys.id, testimonial.fields.title, testimonial.fields.summary, 'below', '', testimonial.fields %}
             {% endif %}
         {% endfor %}
         

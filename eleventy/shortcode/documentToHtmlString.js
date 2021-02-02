@@ -9,7 +9,7 @@ const options = {
         const contentType = node?.data?.target?.fields?.file?.contentType;
         if (contentType && contentType.includes('image')) {
           const file = node?.data?.target?.fields?.file;
-          return `<img src=${file.url} width="${file.details.image.width}" height="${file.details.image.height}" />`
+          return `<img src=${file.url} width="${file.details.image.width}" height="${file.details.image.height}" alt="${file.fileName}"/>`
         } else {
           html = `
           <script>

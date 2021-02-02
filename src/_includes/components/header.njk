@@ -1,18 +1,21 @@
 <header id="header" class="p-2 flex items-center justify-center shadow-lg">
   <a href="{{ '/' | url }}" class="w-10 h-10">
-    <img src="/assets/images/logo.png" alt="Freedom Boat Club Image" class="w-10 h-10 max-w-none	"/>
+    <img src="{{ globals.header.fields.logo.fields.file.url }}" alt="Freedom Boat Club Logo" class="w-10 h-10 max-w-none	"/>
   </a>
   <h2 class="flex-grow flex items-center mx-2 md:mx-4">
     <a href="{{ '/' | url }}" class="text-blue-fbc text-base md:text-lg font-bold"
-      >Freedom Boat Club of Virginia</a
+      >{{globals.header.fields.companyName}}</a
     >
   </h2>
-  <nav class="grid grid-cols-1 md:grid-cols-2 justify-center gap-2">
-    <a href="/#" class="hidden md:inline-block py-2 px-2 md:px-3 rounded bg-white text-blue-fbc border-2 border-blue-fbc font-bold text-center text-sm md:text-base"
-      >Instant Tour</a
-    >
-    <a href="/#" class="py-2 px-2 md:px-3 rounded bg-blue-fbc text-white border-2 border-blue-fbc font-bold text-center text-sm md:text-base"
-      >Join Now</a
-    >
+  <nav class="grid grid-cols-1 md:grid-cols-2 justify-center gap-1 md:gap-2">
+    {% for btn in globals.header.fields.buttons %}
+      {% set btnClasses = 'bg-white text-blue-fbc ' %}
+      {% if btn.fields.styling %}
+        {% set btnClasses = 'bg-blue-fbc text-white' %}
+      {% endif %}
+      <a
+        class="py-2 px-2 md:px-3 rounded border-2 border-blue-fbc font-bold text-center text-xs md:text-base {{btnClasses}}" 
+        href="{{ btn.fields.destination }}">{{ btn.fields.title }}</a>
+    {% endfor %}
   </nav>
 </header>

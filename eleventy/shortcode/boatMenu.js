@@ -16,6 +16,7 @@ module.exports = function (pageBoats = []) {
             count: currentCount + 1,
             name: boat.fields.name || '',
             ytId: youTubeId(boat.fields.youTubeUrl),
+            coverImage: boat.fields.coverImage?.fields?.file?.url || null,
             description: documentToHtmlString(boat.fields.description) || '',
             summary: boat.fields.summary || '',
             meta1: boat.fields.meta1 || '',
@@ -38,10 +39,18 @@ module.exports = function (pageBoats = []) {
             `data-meta3="${boat.meta3}"`,
             `data-count="${boat.count}"`,
             `data-ytId="${boat.ytId}"`,
+            `data-cover-image="${boat.coverImage}"`,
         ]
         html += `
-        <li class="boat grid font-headline bg-gray-200 shadow-lg cursor-pointer" ${dataAttrs.join(' ')}>
-            <img src="https://i.ytimg.com/vi_webp/${boat.ytId}/maxresdefault.webp">
+        <li class="boat grid font-headline bg-gray-200 shadow-lg cursor-pointer overflow-hidden" ${dataAttrs.join(' ')}>
+        `;
+        if (boat.coverImage) {
+            html +=`<img class="w-full" src="${boat.coverImage}" alt="A picture of a boat">`
+        } else {
+            html +=`<img class="w-full" src="https://i.ytimg.com/vi_webp/${boat.ytId}/maxresdefault.webp" alt="A picture of a boat">`
+        }
+        html +=`
+            
             <div class="p-4 text-center rounded shadow-lg">
                 <h3 class="text-xl font-bold">${boat.name}</h3>
                 <div class="mt-4">${boat.summary}</div>
